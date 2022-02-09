@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { MyprofileComponent } from './myprofile/myprofile.component';
 import { AboutComponent } from './about/about.component';
+import { DashboardService } from '../dashboard.service';
 
 @NgModule({
   declarations: [DashboardComponent,MyprofileComponent,AboutComponent],
@@ -16,7 +17,8 @@ import { AboutComponent } from './about/about.component';
   exports:
   [
     DashboardComponent,MyprofileComponent,AboutComponent
-  ]
+  ],
+  providers:[DashboardService]
 
 })
 export class AdminModule { }
