@@ -16,12 +16,24 @@ export class ProjectsService
 
   getAllProjects(): Observable<Project[]>
   {
-    return this.httpClient.get<Project[]>(this.urlPrefix + "/api/projects");
+    return this.httpClient.get<Project[]>(this.urlPrefix + "/api/projects",{responseType :"json"});
   }
 
   insertProject(newProject: Project): Observable<Project>
   {
-    return this.httpClient.post<Project>(this.urlPrefix + "/api/projects", newProject);
+    return this.httpClient.post<Project>(this.urlPrefix + "/api/projects", newProject,{responseType :"json"});
+  }
+   updateProject(existingProject: Project): Observable<Project>
+  {
+    return this.httpClient.put<Project>(this.urlPrefix + "/api/projects", existingProject,{responseType :"json"});
+  }
+   deleteProject(projectId: number): Observable<string>
+  {
+    return this.httpClient.delete<string>(this.urlPrefix + "/api/projects?projectID="+ projectId);
+  }
+   searchProject(searchBy: string,searchText:string): Observable<Project[]>
+  {
+    return this.httpClient.get<Project[]>(this.urlPrefix + "/api/projects/search/"+"/"+searchText,{responseType :"json"});
   }
 }
 
